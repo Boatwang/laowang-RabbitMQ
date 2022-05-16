@@ -8,7 +8,7 @@ import com.rabbitmq.client.Delivery;
 /**
  * @CreateTime 2022/5/16-16 17:39
  * @Author laowang
- * @Description
+ * @Description .
  */
 public class ReceiveLogs01 {
 
