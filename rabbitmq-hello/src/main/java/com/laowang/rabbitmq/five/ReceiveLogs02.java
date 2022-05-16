@@ -10,7 +10,7 @@ import com.rabbitmq.client.Delivery;
  * @Author laowang
  * @Description
  */
-public class ReceiveLogs01 {
+public class ReceiveLogs02 {
 
     //声明交换机的名称
     private static final String EXCHANGE_NAME = "logs";
@@ -39,7 +39,7 @@ public class ReceiveLogs01 {
         System.out.println("等待接收消息，把接收到的消息打印在屏幕上......");
 
         DeliverCallback deliverCallback = (String consumerTag, Delivery message) -> {
-            System.out.println("ReceiveLogs01控制台打印接收到的消息："+ new String(message.getBody(),"utf-8"));
+            System.out.println("ReceiveLogs02控制台打印接收到的消息："+ new String(message.getBody(),"utf-8"));
         };
 
         channel.basicConsume(queue,true,deliverCallback,consumerTag -> {});
