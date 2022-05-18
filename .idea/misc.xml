@@ -9,10 +9,12 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/rabbitmq-hello/pom.xml" />
+        <option value="$PROJECT_DIR$/spr/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-rabbitmq/pom.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="openjdk-18" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="SuppressionsComponent">
