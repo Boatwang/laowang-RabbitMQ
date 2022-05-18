@@ -21,13 +21,13 @@ public class Producer {
         Channel channel = RabbitMqUtils.getChannel();
 
         //死信消息，设置过期时间 单位是毫秒
-        AMQP.BasicProperties properties =
-                new AMQP.BasicProperties()
-                        .builder().expiration("10000").build();
+//        AMQP.BasicProperties properties =
+//                new AMQP.BasicProperties()
+//                        .builder().expiration("10000").build();
 
         for (int i = 0; i < 10; i++) {
-            String message = "" + i;
-            channel.basicPublish(NORMAL_EXCHANGE,"zhangsan",properties,message.getBytes(StandardCharsets.UTF_8));
+            String message = "info" + i;
+            channel.basicPublish(NORMAL_EXCHANGE,"zhangsan",null,message.getBytes(StandardCharsets.UTF_8));
         }
     }
 }

@@ -37,6 +37,7 @@ public class Consumer01 {
         params.put("x-dead-letter-exchange", DEAD_EXCHANGE);
         //设置死信交换机与哪个死信队列之间的routingkey
         params.put("x-dead-letter-routing-key", "lisi");
+        //设置普通队列的接收消息的长度
 
         //声明普通队列与普通交换机绑定
         String normalQueue = "normal_queue";
@@ -47,10 +48,16 @@ public class Consumer01 {
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String message = new String(delivery.getBody(), "utf-8");
-            System.out.println("Consumer01接收到消息"+message);
+            if (message.equals("info5")){
+                System.out.println("Consumer01接收到的消息是"+message+":此消息是被Consumer01拒绝的");
+                channel.basicReject(delivery.getEnvelope().getDeliveryTag(),false);
+            }else {
+                System.out.println("Consumer01接收到消息"+message);
+                channel.basicAck(delivery.getEnvelope().getDeliveryTag(),false);
+            }
         };
 
-        channel.basicConsume(normalQueue,true,deliverCallback,consumerTag -> {});
+        channel.basicConsume(normalQueue,false,deliverCallback,consumerTag -> {});
 
     }
 }
